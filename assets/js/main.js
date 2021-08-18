@@ -75,15 +75,19 @@ function startTaxCalculation() {
 
     let churchTaxRate = document.getElementById("churchTaxSelection").value;
     let churchTax = incomeTax * churchTaxRate / 100;
+    let solidarityTax = solidarityTaxCalculation(year, incomeTax);
+
 
     setNumberInnerHTML("incomeTax", incomeTax);
     setNumberInnerHTML("churchTax", churchTax);
+    setNumberInnerHTML("solidarityTax", solidarityTax);
     setNumberInnerHTML("totalTaxes", incomeTax + churchTax);
 
 }
 
 //----------------------------------------------------------------------------
 function taxCalculation(year, income) {
+
     let taxes = 0;
     switch (year) {
         case 2021:
@@ -96,18 +100,43 @@ function taxCalculation(year, income) {
             taxes = formula2019(income, year2019);
             break;
     }
-
     return taxes;
+}
+
+//----------------------------------------------------------------------------
+function solidarityTaxCalculation(year, incomeTax) {
+
+    let soli = 0;
+    let soliPercentage = 5.5;
+    let maxPercentage = year < 2021 ? 20 : 11.9;
+    let taxFreeAmount = year < 2021 ? 972 : 16596;
+
+    // double the tax free amount for partners
+    if (assessmentType == SplitAssessment) {
+        taxFreeAmount *= 2;
+    }
+
+    // if tax is more than the tax free amount...
+    if (incomeTax > taxFreeAmount) {
+
+        soli = incomeTax * soliPercentage / 100;
+        let maxSoliTax = (incomeTax - taxFreeAmount) * maxPercentage / 100;
+        soli = Math.min(maxSoliTax, soli);
+    }
+
+    return soli;
 }
 
 //----------------------------------------------------------------------------
 function formula2021(income, limits) {
 
     let chargeableIncome = income;
+
+    // disabled until I know how this money affects tax calculation
     // did we receive some compensation?
-    if (gotCompensation) {
-        chargeableIncome += Number(document.getElementById("txtCompensation").value) * 2;
-    }
+    // if (gotCompensation) {
+    //     chargeableIncome += Number(document.getElementById("txtCompensation").value) * 2;
+    // }
 
     let taxes = 0;
     switch (true) {
@@ -263,6 +292,6 @@ function formatNumber(value, showCurrencySymbol = true) {
 
 //----------------------------------------------------------------------------
 // Debugging helpers
-function debugVar(expr) {
+function debugVar(...expr) {
     console.log(varToString(expr) + ": ", eval(expr));
 }
