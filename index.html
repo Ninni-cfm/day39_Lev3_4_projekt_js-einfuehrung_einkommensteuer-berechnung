@@ -17,13 +17,13 @@
     <form action="" onsubmit="return false;">
 
         <!-- headline -->
-        <section class="headline">
+        <div class="section headline">
             <h2>Einkommensteuer-Berechnung</h2>
-        </section>
+        </div>
 
         <!-- ========================================= -->
         <!-- Veranlagungsjahr -->
-        <section>
+        <div class="section">
             <div>
                 <p>Veranlagungsjahr:</p>
             </div>
@@ -34,11 +34,11 @@
                     <option value="2019">2019</option>
                 </select>
             </div>
-        </section>
+        </div>
 
         <!-- ========================================= -->
         <!-- Grundtarif- oder Splittingtarif -->
-        <section>
+        <div class="section">
             <div>
                 <p>Art der Veranlagung:</p>
             </div>
@@ -50,11 +50,11 @@
                         onclick="changeAssessmentType(true)">&nbsp;<span>Zusammenveranlagung</span>
                 </p>
             </div>
-        </section>
+        </div>
 
         <!-- ========================================= -->
         <!-- zu versteuernde(s) Einkommen -->
-        <section>
+        <div class="section">
             <div>
                 <p>zu versteuerndes Einkommen:</p>
                 <p id="lblIncome2">zu versteuerndes Einkommen des Partners:</p>
@@ -70,12 +70,11 @@
                         onchange="formatIncome('txtIncome2')">&nbsp;<span>
                         Euro </span></p>
             </div>
-        </section>
+        </div>
 
         <!-- ========================================= -->
         <!-- Entgeltersatzleistungen -->
-        <!-- disabled until I know how this money affects tax calculation -->
-        <!-- <section>
+        <div class="section">
             <div>
                 <p>Entgeltersatzleistungen:</p>
             </div>
@@ -89,13 +88,11 @@
                     </span>
                 </p>
             </div>
-        </section> -->
-
-
+        </div>
 
         <!-- ========================================= -->
         <!-- Kirchensteuer -->
-        <section>
+        <div class="section">
             <div>
                 <p>Kirchensteuer:</p>
             </div>
@@ -106,56 +103,57 @@
                     <option value="9">9% (übrige))</option>
                 </select>
             </div>
-        </section>
+        </div>
 
         <!-- ========================================= -->
         <!-- Berechnen-Button -->
-        <section class="buttonContainer">
+        <div class="section buttonContainer">
             <input type="button" value="Berechnen" onclick="startTaxCalculation()">
-        </section>
+        </div>
 
         <!-- ***************************************** -->
         <!-- Ergebnis-Sektion  -->
-        <section class="headline">
+        <div class="section headline">
             <h2>Ergebnis</h2>
-        </section>
+        </div>
 
         <!-- ========================================= -->
-        <section>
+        <div class="section">
             <div>
                 <p>Einkommensteuer:</p>
             </div>
             <div>
                 <p id="incomeTax" class="resultValue">?</p>
             </div>
-        </section>
+        </div>
 
         <!-- disabled until I know how to compute the solidarity tax -->
-        <section>
+        <!-- <section style="display: none"> -->
+        <div class="section">
             <div>
                 <p>Solidaritätszuschlag:</p>
             </div>
             <div>
                 <p id="solidarityTax" class="resultValue">?</p>
             </div>
-        </section>
+        </div>
 
-        <section>
+        <div class="section">
             <div>
                 <p>Kirchensteuer:</p>
             </div>
             <div>
                 <p id="churchTax" class="resultValue">?</p>
             </div>
-        </section>
-        <section>
+        </div>
+        <div class="section">
             <div>
                 <p>Gesamtbelastung:</p>
             </div>
             <div>
                 <p id="totalTaxes" class="resultValue">?</p>
             </div>
-        </section>
+        </div>
     </form>
 
     <script src="assets/js/main.js"></script>

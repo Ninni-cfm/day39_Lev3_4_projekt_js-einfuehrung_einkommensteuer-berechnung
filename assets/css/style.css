@@ -27,7 +27,6 @@ form {
     margin: 0 auto;
     padding-top: 2rem;
 }
-
 h2 {
     padding: 1rem;
 }
@@ -35,15 +34,16 @@ p {
     padding: 0.25rem;
 }
 
-section > div:first-of-type {
+.section > div:first-of-type {
     width: 50%;
     text-align: right;
     margin-left: 0;
 }
-section > div:last-of-type {
+.section > div:last-of-type {
     width: 50%;
     margin-right: 0;
 }
+
 .headline {
     background-color: var(--secondaryBG);
     color: var(--secondaryFG);
@@ -53,12 +53,15 @@ section > div:last-of-type {
 section:not(.headline) {
     display: flex;
 }
+.section:not(.headline) {
+    display: flex;
+}
 .buttonContainer {
     display: flex;
     justify-content: flex-end;
 }
 
-div {
+div:not(.section) {
     background-color: var(--primaryBG);
     margin: 2px;
     padding: 10px;
