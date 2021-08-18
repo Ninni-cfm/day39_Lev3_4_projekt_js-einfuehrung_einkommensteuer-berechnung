@@ -1,0 +1,35 @@
+year: 2021, 
+max1: 9744, 
+max2: 14753, 
+max3: 57918, 
+max4: 274612, 
+max5: Infinity 
+
+const2a: 995.21
+const2b: 1400
+
+const3a: 208.85
+const3b: 2397
+
+factor4: 0.42
+const4: 9136.63
+
+factor5: 0.45
+const5: 17374.99
+
+case 1:
+	ESt = 0
+
+case 2:
+	y = ( zvE - max1 ) / 10.000
+	ESt = ( const2a * y + const2b ) * y
+ 
+case 3:
+	z = ( zvE - max2 ) / 10.000
+	ESt = (const3a * z + const3b) * z + ESt(max2)
+	
+case 4:
+	ESt = factor4 * zvE - const4
+	
+case 5:
+	ESt = factor5 * zvE - const5

@@ -34,6 +34,10 @@ p {
     padding: 0.25rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 .section > div:first-of-type {
     width: 50%;
     text-align: right;
@@ -49,7 +53,16 @@ p {
     color: var(--secondaryFG);
     border-radius: 0.5rem;
     margin: 2px;
+
+    display: flex;
+    justify-content: space-between;
 }
+.headline a {
+    color: var(--secondaryFG);
+    font-size: 3rem;
+    padding-right: 10px;
+}
+
 section:not(.headline) {
     display: flex;
 }
