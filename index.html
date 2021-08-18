@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Einkommensteuer-Berechnung</title>
+</head>
+
+<body>
+
+
+    <form action="" onsubmit="return false;">
+
+        <!-- headline -->
+        <section class="headline">
+            <h2>Einkommensteuer-Berechnung</h2>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Veranlagungsjahr -->
+        <section>
+            <div>
+                <p>Veranlagungsjahr:</p>
+            </div>
+            <div>
+                <select name="year" id="yearSelection">
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Grundtarif- oder Splittingtarif -->
+        <section>
+            <div>
+                <p>Art der Veranlagung:</p>
+            </div>
+            <div>
+                <p><input type="radio" name="assessmentType" id="assessmentSingle" checked
+                        onclick="changeAssessmentType(false)">&nbsp;<span>Einzelveranlagung</span>
+                </p>
+                <p><input type="radio" name="assessmentType" id="assessmentSplit"
+                        onclick="changeAssessmentType(true)">&nbsp;<span>Zusammenveranlagung</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- zu versteuernde(s) Einkommen -->
+        <section>
+            <div>
+                <p>zu versteuerndes Einkommen:</p>
+                <p id="lblIncome2">zu versteuerndes Einkommen des Partners:</p>
+            </div>
+            <div>
+                <!-- Einkommen 1 -->
+                <p><input type="text" name="txtIncome1" id="txtIncome1" value="0"
+                        onchange="formatInputNumber('txtIncome1')">&nbsp;<span>
+                        Euro </span></p>
+
+                <!-- Einkommen 2 -->
+                <p id="blkIncome2"><input type="text" name="txtIncome2" id="txtIncome2" value="0"
+                        onchange="formatIncome('txtIncome2')">&nbsp;<span>
+                        Euro </span></p>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Entgeltersatzleistungen -->
+        <!-- disabled until I know how this money affects tax calculation -->
+        <!-- <section>
+            <div>
+                <p>Entgeltersatzleistungen:</p>
+            </div>
+            <div>
+                <p><input type="checkbox" name="chkCompensation" id="chkCompensation" onchange="checkCompensation()">
+                    <span id="noCompensation">&nbsp;Keine</span>
+                    <span id="gotCompensation">
+                        <input type="text" name="txtCompensation" id="txtCompensation" value="0"
+                            onchange="formatInputNumber('txtCompensation')">&nbsp;<span>
+                            Euro </span>
+                    </span>
+                </p>
+            </div>
+        </section> -->
+
+
+
+        <!-- ========================================= -->
+        <!-- Kirchensteuer -->
+        <section>
+            <div>
+                <p>Kirchensteuer:</p>
+            </div>
+            <div>
+                <select name="year" id="churchTaxSelection">
+                    <option value="0">keine</option>
+                    <option value="8">8% (Bayern, BaWü)</option>
+                    <option value="9">9% (übrige))</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Berechnen-Button -->
+        <section class="buttonContainer">
+            <input type="button" value="Berechnen" onclick="startTaxCalculation()">
+        </section>
+
+        <!-- ***************************************** -->
+        <!-- Ergebnis-Sektion  -->
+        <section class="headline">
+            <h2>Ergebnis</h2>
+        </section>
+
+        <!-- ========================================= -->
+        <section>
+            <div>
+                <p>Einkommensteuer:</p>
+            </div>
+            <div>
+                <p id="incomeTax" class="resultValue">?</p>
+            </div>
+        </section>
+
+        <!-- disabled until I know how to compute the solidarity tax -->
+        <!-- <section>
+            <div>
+                <p>Solidaritätszuschlag:</p>
+            </div>
+            <div>
+                <p id="solidarityTax" class="resultValue">?</p>
+            </div>
+        </section> -->
+
+        <section>
+            <div>
+                <p>Kirchensteuer:</p>
+            </div>
+            <div>
+                <p id="churchTax" class="resultValue">?</p>
+            </div>
+        </section>
+        <section>
+            <div>
+                <p>Gesamtbelastung:</p>
+            </div>
+            <div>
+                <p id="totalTaxes" class="resultValue">?</p>
+            </div>
+        </section>
+    </form>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
